@@ -1,0 +1,38 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" i>
+</head>
+
+<body>
+  
+  <div id="app">
+    <div class="container" style="padding-top:100px;">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>All Blog</h3><br>
+          <p v-if="blogs.length ===0">No Data</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" v-for="blog in blogs">{{blog.title}} - <a href="#" v-on:click="remove(blog)">Delete</a> <a href="#" v-on:click="edit(blog)">edit</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+            <h3>Add Blog</h3><br>
+          <input type="text" v-model="title"  class="form-control"><br>
+          <div v-if='adds == true'>
+            <input type="button" value="Add Item" v-on:click="add" class="btn btn-primary" ><br><br>
+          </div>
+          <div v-else>
+            <input type="hidden" v-model="id" v-bind:value="id.value" class="form-control"><br>
+            <input type="button" value="Update Item" v-on:click="update" class="btn btn-primary" ><br><br>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
